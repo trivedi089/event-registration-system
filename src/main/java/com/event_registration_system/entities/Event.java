@@ -1,5 +1,6 @@
 package com.event_registration_system.entities;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,6 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 @Builder
+@Entity
 public class Event {
 
     @Id
@@ -23,5 +25,4 @@ public class Event {
     private Date date;
     private String location;
     private String description;
-
 }
