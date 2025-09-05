@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -25,5 +26,11 @@ public class EventController {
     @GetMapping("/events")
     public List<Event> eventList(){
         return eventService.findAllEvents();
+    }
+
+    //Get Event by Id
+    @GetMapping("/events/{id}")
+    public Optional<Event> getEventById(@PathVariable Long id){
+        return eventService.getEventById(id);
     }
 }

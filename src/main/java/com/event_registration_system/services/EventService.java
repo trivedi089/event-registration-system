@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventService {
@@ -21,5 +22,10 @@ public class EventService {
     //Get all Events
     public List<Event> findAllEvents(){
         return eventRepository.findAll();
+    }
+
+    //get Event by Id
+    public Optional<Event> getEventById(Long id){
+        return eventRepository.findById(id);
     }
 }
