@@ -3,46 +3,51 @@ package com.event_registration_system.controller;
 import com.event_registration_system.entities.Event;
 import com.event_registration_system.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/events")
 public class EventController {
 
     @Autowired
     private EventService eventService;
 
-    //Creating Event
-    @PostMapping("/events")
-    public Event createEvent(@Valid @RequestBody Event event){
-         return eventService.createEvent(event);
+    // Create Event
+    @PostMapping
+    public ResponseEntity<Event> createEvent(@Valid @RequestBody Event event) {
+        Event created = eventService.createEvent(event);
+        return ResponseEntity.ok(created);
     }
 
-    //Get all Events
-    @GetMapping("/events")
-    public List<Event> eventList(){
-        return eventService.findAllEvents();
+    // Get all events
+    @GetMapping
+    public ResponseEntity<List<Event>> getAllEvents() {
+        return ResponseEntity.ok(eventService.getAllEvents());
     }
 
-    //Get Event by Id
-    @GetMapping("/events/{id}")
-    public Optional<Event> getEventById(@PathVariable Long id){
-        return eventService.getEventById(id);
+    // Get event by ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Event> getEventById(@PathVariable Long id) {
+        return eventService.getEventById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
-    //update Event
-    @PostMapping("/events/{id}")
-    public Optional<Event> updateEvent(@PathVariable Long id, @Valid @RequestBody Event event){
-        return eventService.updateEvent(id,event);
+    // Update event
+    @PutMapping("/{id}")
+    public ResponseEntity<Event> updateEvent(@PathVariable Long id, @Valid @RequestBody Event event) {
+        Event updated = eventService.updateEvent(id, event);
+        return ResponseEntity.ok(updated);
     }
 
-    //delete Event
-    @DeleteMapping("/events/{id}")
-    public void deleteEvent(@PathVariable Long id){
+    // Delete event
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEvent(@PathVariable Long id) {
         eventService.deleteEvent(id);
+        return ResponseEntity.noContent().build();
     }
 }
