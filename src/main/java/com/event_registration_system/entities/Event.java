@@ -1,15 +1,12 @@
 package com.event_registration_system.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,8 +18,17 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotBlank(message = "Event name is mandatory")
+    @Size(max = 100, message = "Event name can be max 100 characters")
     private String name;
-    private Date date;
+
+    @Future(message = "Event date must be in the future")
+    private LocalDate date;
+
+    @NotBlank(message = "Location is mandatory")
     private String location;
+
+    @Size(max = 500, message = "Description can be max 500 characters")
     private String description;
 }
