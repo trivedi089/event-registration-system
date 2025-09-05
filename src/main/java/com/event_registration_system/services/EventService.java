@@ -5,6 +5,8 @@ import com.event_registration_system.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EventService {
 
@@ -16,4 +18,8 @@ public class EventService {
         return eventRepository.save(event);
     }
 
+    //Get all Events
+    public List<Event> findAllEvents(){
+        return eventRepository.findAll();
+    }
 }
