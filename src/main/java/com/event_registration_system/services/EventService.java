@@ -3,6 +3,7 @@ package com.event_registration_system.services;
 import com.event_registration_system.entities.Event;
 import com.event_registration_system.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,5 +41,9 @@ public class EventService {
             eventRepository.save(existing);
         });
         return event;
+    }
+
+    public void deleteEvent(Long id){
+        eventRepository.deleteById(id);
     }
 }
