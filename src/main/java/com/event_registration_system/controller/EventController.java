@@ -33,4 +33,11 @@ public class EventController {
     public Optional<Event> getEventById(@PathVariable Long id){
         return eventService.getEventById(id);
     }
+
+    //update Event
+    @PostMapping("/events/{id}")
+    public Optional<Event> updateEvent(@PathVariable Long id, @Valid @RequestBody Event event){
+        return eventService.updateEvent(id,event);
+    }
+
 }

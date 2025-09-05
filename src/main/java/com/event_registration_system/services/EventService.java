@@ -28,4 +28,17 @@ public class EventService {
     public Optional<Event> getEventById(Long id){
         return eventRepository.findById(id);
     }
+
+    //updateEvent
+    public Optional<Event> updateEvent(Long id, Event updatedEvent){
+        Optional<Event> event = eventRepository.findById(id);
+        event.ifPresent(existing -> {
+            existing.setName(updatedEvent.getName());
+            existing.setDate(updatedEvent.getDate());
+            existing.setLocation(updatedEvent.getLocation());
+            existing.setDescription(updatedEvent.getDescription());
+            eventRepository.save(existing);
+        });
+        return event;
+    }
 }
