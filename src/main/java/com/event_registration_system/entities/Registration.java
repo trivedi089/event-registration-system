@@ -22,5 +22,5 @@ public class Registration {
     @JoinColumn(name = "event_id", nullable = false)
     private Event event;
 
-    private String status; // e.g. "CONFIRMED", "CANCELLED"
+    private String status; //"CONFIRMED", "CANCELLED"
 }
