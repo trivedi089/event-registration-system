@@ -44,5 +44,40 @@
       			spring.jpa.show-sql=true
       			spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
-5.	Run the project:
+4.	Run the project:
     mvn spring-boot:run
+
+5. API Documentation :
+   
+   	1. Auth APIs (AuthController)
+
+		Handles user authentication and registration:
+		Register User Endpoint : /api/auth/register
+		Method : POST
+
+  		Register Request:
+		{
+ 		 "name": "Alice",
+ 		 "email": "alice@example.com",
+ 		 "password": "pass"
+		}
+
+  		Register Response:
+		{
+  		"id": 1,
+  		"name": "Alice",
+  		"email": "alice@example.com",
+  		"roles": ["USER"]
+		}
+
+ 		Login user Endpoint : /api/auth/login
+		Method : POST
+
+  		Login Request:
+		{
+ 		 "email": "alice@example.com",
+  		"password": "pass"
+		}
+
+		Login Response:
+		Login successful for: alice@example.com
