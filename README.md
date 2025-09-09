@@ -67,24 +67,258 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 # Run the Project
 mvn spring-boot:run
 
-# API Documentation
+## API Documentation
 
-## 1. Auth APIs
-	Register User
-	•	Endpoint: /api/auth/register
-	•	Method: POST
-	
-	Request:
-	{
-  	"name": "Alice",
-  	"email": "alice@example.com",
- 	 "password": "pass"
-	}
+### Auth APIs (AuthController)
 
-	Response :
-	{
-  	"id": 1,
-  	"name": "Alice",
-  	"email": "alice@example.com",
-  	"roles": ["USER"]
-	}
+**Register User**  
+- **Endpoint:** `/api/auth/register`  
+- **Method:** POST  
+- **Description:** Registers a new user with default role "USER".  
+**Request:**
+```json
+{
+  "name": "Alice",
+  "email": "alice@example.com",
+  "password": "pass"
+}
+
+**Response:**
+```json
+{
+  "id": 1,
+  "name": "Alice",
+  "email": "alice@example.com",
+  "roles": ["USER"]
+}
+
+- **Endpoint:** `/api/auth/login`  
+- **Method:** POST  
+- **Description:** Authenticates a user and returns a success message.  
+**Request:**
+```json
+{
+  "email": "alice@example.com",
+  "password": "pass"
+}
+
+**Response:**
+Login successful for: alice@example.com
+
+### Event APIs (EventController)
+
+### Create Event
+
+**Endpoint:** `/api/events`  
+**Method:** POST  
+**Description:** Creates a new event.  
+**Request:**
+```json
+{
+  "name": "Hackathon",
+  "date": "2025-10-01",
+  "location": "Pune",
+  "description": "24-hour coding event"
+}
+**Response:**
+```json
+{
+  "id": 4,
+  "name": "Hackathon",
+  "date": "2025-10-01",
+  "location": "Pune",
+  "description": "24-hour coding event"
+}
+
+**Get All Events**  
+- **Endpoint:** `/api/events`  
+- **Method:** GET  
+- **Description:** Retrieves a list of all events.  
+**Response:**
+```json
+[
+  {
+    "id": 1,
+    "name": "Meetup",
+    "date": "2025-09-12",
+    "location": "Mumbai",
+    "description": ""
+  },
+  {
+    "id": 2,
+    "name": "Workshop",
+    "date": "2025-09-15",
+    "location": "Bangalore",
+    "description": ""
+  },
+  {
+    "id": 3,
+    "name": "Conference",
+    "date": "2025-09-20",
+    "location": "Delhi",
+    "description": ""
+  }
+]
+
+**Update Event**  
+- **Endpoint:** `/api/events/{id}`  
+- **Method:** PUT  
+- **Description:** Updates an existing event by its ID.  
+**Request:**
+```json
+{
+  "name": "Updated Hackathon",
+  "date": "2025-10-02",
+  "location": "Pune",
+  "description": "48-hour coding event"
+}
+
+**Delete Event**  
+- **Endpoint:** `/api/events/{id}`  
+- **Method:** DELETE  
+- **Description:** Deletes an event by its ID.  
+**Response:**
+```json
+{
+  "message": "Event deleted successfully"
+}
+
+### Registration APIs (RegistrationController)
+
+**Register User for Event**  
+- **Endpoint:** `/api/registrations/register/{userId}/{eventId}`  
+- **Method:** POST  
+- **Description:** Registers a user for a specific event.  
+**Response:**
+```json
+{
+  "id": 1,
+  "user": {
+    "id": 1,
+    "name": "Alice",
+    "email": "alice@example.com",
+    "roles": ["USER"]
+  },
+  "event": {
+    "id": 1,
+    "name": "Meetup",
+    "date": "2025-09-12",
+    "location": "Mumbai",
+    "description": ""
+  },
+  "status": "CONFIRMED"
+}
+
+### Get All Registrations
+
+- **Endpoint:** `/api/registrations`  
+- **Method:** GET  
+- **Description:** Retrieves a list of all registrations in the system.  
+- **Response:**
+```json
+[
+  {
+    "id": 1,
+    "user": {
+      "id": 1,
+      "name": "Alice",
+      "email": "alice@example.com",
+      "roles": ["USER"]
+    },
+    "event": {
+      "id": 1,
+      "name": "Meetup",
+      "date": "2025-09-12",
+      "location": "Mumbai",
+      "description": ""
+    },
+    "status": "CONFIRMED"
+  },
+  {
+    "id": 2,
+    "user": {
+      "id": 2,
+      "name": "Bob",
+      "email": "bob@example.com",
+      "roles": ["USER"]
+    },
+    "event": {
+      "id": 2,
+      "name": "Workshop",
+      "date": "2025-09-15",
+      "location": "Bangalore",
+      "description": ""
+    },
+    "status": "CONFIRMED"
+  }
+]
+
+### Get Registrations by User
+
+- **Endpoint:** `/api/registrations/user/{userId}`  
+- **Method:** GET  
+- **Description:** Retrieves all registrations for a specific user based on their `userId`.  
+- **Response:**
+```json
+[
+  {
+    "id": 1,
+    "user": {
+      "id": 1,
+      "name": "Alice",
+      "email": "alice@example.com",
+      "roles": ["USER"]
+    },
+    "event": {
+      "id": 1,
+      "name": "Meetup",
+      "date": "2025-09-12",
+      "location": "Mumbai",
+      "description": ""
+    },
+    "status": "CONFIRMED"
+  },
+  {
+    "id": 3,
+    "user": {
+      "id": 1,
+      "name": "Alice",
+      "email": "alice@example.com",
+      "roles": ["USER"]
+    },
+    "event": {
+      "id": 3,
+      "name": "Conference",
+      "date": "2025-09-20",
+      "location": "Delhi",
+      "description": ""
+    },
+    "status": "CONFIRMED"
+  }
+]
+
+### Cancel Registration
+
+- **Endpoint:** `/api/registrations/cancel/{registrationId}`  
+- **Method:** PUT  
+- **Description:** Cancels a registration by updating its status to `"CANCELLED"`.  
+- **Response:**
+```json
+{
+  "id": 1,
+  "user": {
+    "id": 1,
+    "name": "Alice",
+    "email": "alice@example.com",
+    "roles": ["USER"]
+  },
+  "event": {
+    "id": 1,
+    "name": "Meetup",
+    "date": "2025-09-12",
+    "location": "Mumbai",
+    "description": ""
+  },
+  "status": "CANCELLED"
+}
+
