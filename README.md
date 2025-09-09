@@ -339,3 +339,14 @@ To run all tests:
 
 ```bash
 mvn test
+```
+## Docker Deployment
+
+This project is fully dockerized, including the Spring Boot application and PostgreSQL database. Follow these steps to run the system:
+
+### 1. Build and Run with Docker Compose
+
+Make sure you have **Docker** and **Docker Compose** installed. Then run:
+
+```bash
+docker-compose up --build
