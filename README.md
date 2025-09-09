@@ -88,7 +88,7 @@ GRANT ALL PRIVILEGES ON DATABASE eventdb TO eventuser;
   "email": "alice@example.com",
   "password": "pass"
 }
-
+```
 **Response:**
 ```json
 {
@@ -97,7 +97,7 @@ GRANT ALL PRIVILEGES ON DATABASE eventdb TO eventuser;
   "email": "alice@example.com",
   "roles": ["USER"]
 }
-
+```
 - **Endpoint:** `/api/auth/login`  
 - **Method:** POST  
 - **Description:** Authenticates a user and returns a success message.  
@@ -107,7 +107,7 @@ GRANT ALL PRIVILEGES ON DATABASE eventdb TO eventuser;
   "email": "alice@example.com",
   "password": "pass"
 }
-
+```
 **Response:**
 Login successful for: alice@example.com
 
@@ -126,6 +126,7 @@ Login successful for: alice@example.com
   "location": "Pune",
   "description": "24-hour coding event"
 }
+```
 **Response:**
 ```json
 {
@@ -135,7 +136,7 @@ Login successful for: alice@example.com
   "location": "Pune",
   "description": "24-hour coding event"
 }
-
+```
 **Get All Events**  
 - **Endpoint:** `/api/events`  
 - **Method:** GET  
@@ -165,7 +166,7 @@ Login successful for: alice@example.com
     "description": ""
   }
 ]
-
+```
 **Update Event**  
 - **Endpoint:** `/api/events/{id}`  
 - **Method:** PUT  
@@ -178,7 +179,7 @@ Login successful for: alice@example.com
   "location": "Pune",
   "description": "48-hour coding event"
 }
-
+```
 **Delete Event**  
 - **Endpoint:** `/api/events/{id}`  
 - **Method:** DELETE  
@@ -188,7 +189,7 @@ Login successful for: alice@example.com
 {
   "message": "Event deleted successfully"
 }
-
+```
 ### Registration APIs (RegistrationController)
 
 **Register User for Event**  
@@ -214,7 +215,7 @@ Login successful for: alice@example.com
   },
   "status": "CONFIRMED"
 }
-
+```
 ### Get All Registrations
 
 - **Endpoint:** `/api/registrations`  
@@ -258,7 +259,7 @@ Login successful for: alice@example.com
     "status": "CONFIRMED"
   }
 ]
-
+```
 ### Get Registrations by User
 
 - **Endpoint:** `/api/registrations/user/{userId}`  
@@ -302,7 +303,7 @@ Login successful for: alice@example.com
     "status": "CONFIRMED"
   }
 ]
-
+```
 ### Cancel Registration
 
 - **Endpoint:** `/api/registrations/cancel/{registrationId}`  
@@ -327,4 +328,4 @@ Login successful for: alice@example.com
   },
   "status": "CANCELLED"
 }
-
+```
