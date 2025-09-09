@@ -37,7 +37,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/events/**").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()
                 )
-                .httpBasic(basic -> {}); // ✅ new lambda style
+                .httpBasic(basic -> {});
 
         return http.build();
     }
