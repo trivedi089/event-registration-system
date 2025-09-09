@@ -1,83 +1,90 @@
-1. Project Overview
-	•	Project name: Event Registration System
-	•	Description: A web application to register users, manage events, and allow users to register for events. Includes basic authentication using Spring Security and data persistence using PostgreSQL.
-	•	Technology Stack:
-	  •	Java 17
-	  •	Spring Boot
-	  •	Spring Security (Basic Auth)
-	  •	JPA / Hibernate
-	  •	PostgreSQL
-	  •	Maven
-	  •	Optional: Insomnia for testing
+# Event Registration System
 
-2. Features / Functionalities
+A web application to register users, manage events, and allow users to register for events. Includes **basic authentication using Spring Security** and data persistence using **PostgreSQL**.
 
-	List all features your system supports. 
-	Example:
-		•	User registration and login
-		•	CRUD operations for events (Create, Read, Update, Delete)
-		•	User can register for events
-		•	View all registrations and registrations per user
-		•	Cancel a registration
-		•	Data persisted in PostgreSQL
- 
-3. Setup Instructions
+---
 
-	setup required to run the project :
+## 1. Project Overview
 
-		1.	Prerequisites:
-			•	Java JDK 17
-			•	Maven
-			•	PostgreSQL installed and running
- 
-  		2. 	Database Setup:
-  			CREATE ROLE eventuser WITH LOGIN PASSWORD 'password';
-  			CREATE DATABASE eventdb;
-  			GRANT ALL PRIVILEGES ON DATABASE eventdb TO eventuser;
+- **Project Name:** Event Registration System
+- **Description:** Manage users, events, and registrations with authentication and authorization.
+- **Technology Stack:**
+	- Java 17
+	- Spring Boot
+	- Spring Security (Basic Auth)
+	- JPA / Hibernate
+	- PostgreSQL
+	- Maven
+	- Optional: Insomnia / Postman for API testing
 
-  		3.	Spring Boot Configuration:
-     		application.properties:
-    			spring.datasource.url=jdbc:postgresql://localhost:5432/eventdb
-      			spring.datasource.username=eventuser
-      			spring.datasource.password=password
-      			spring.jpa.hibernate.ddl-auto=update
-      			spring.jpa.show-sql=true
-      			spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+---
 
-4.	Run the project:
-    mvn spring-boot:run
+## 2. Features / Functionalities
 
-5. API Documentation :
-   
-   	1. Auth APIs (AuthController)
+The system supports:
 
-		Handles user authentication and registration:
-		Register User Endpoint : /api/auth/register
-		Method : POST
+- User registration and login
+- CRUD operations for events (Create, Read, Update, Delete)
+- User can register for events
+- View all registrations and registrations per user
+- Cancel a registration
+- Data persisted in PostgreSQL
 
-  		Register Request:
-		{
- 		 "name": "Alice",
- 		 "email": "alice@example.com",
- 		 "password": "pass"
-		}
+---
 
-  		Register Response:
-		{
-  		"id": 1,
-  		"name": "Alice",
-  		"email": "alice@example.com",
-  		"roles": ["USER"]
-		}
+## 3. Setup Instructions
 
- 		Login user Endpoint : /api/auth/login
-		Method : POST
+### Prerequisites
 
-  		Login Request:
-		{
- 		 "email": "alice@example.com",
-  		"password": "pass"
-		}
+- Java JDK 17
+- Maven
+- PostgreSQL installed and running
 
-		Login Response:
-		Login successful for: alice@example.com
+### Database Setup
+
+Connect to PostgreSQL and execute:
+
+```sql
+-- Create role for Spring Boot
+CREATE ROLE eventuser WITH LOGIN PASSWORD 'password';
+
+-- Create database
+CREATE DATABASE eventdb;
+
+-- Grant privileges
+GRANT ALL PRIVILEGES ON DATABASE eventdb TO eventuser;
+
+# Spring Boot Configuration
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/eventdb
+spring.datasource.username=eventuser
+spring.datasource.password=password
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+# Run the Project
+mvn spring-boot:run
+
+# API Documentation
+
+## 1. Auth APIs
+	Register User
+	•	Endpoint: /api/auth/register
+	•	Method: POST
+	
+	Request:
+	{
+  	"name": "Alice",
+  	"email": "alice@example.com",
+ 	 "password": "pass"
+	}
+
+	Response :
+	{
+  	"id": 1,
+  	"name": "Alice",
+  	"email": "alice@example.com",
+  	"roles": ["USER"]
+	}
