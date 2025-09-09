@@ -1,7 +1,7 @@
 package com.event_registration_system.controller;
 
 import com.event_registration_system.entities.Event;
-import com.event_registration_system.services.EventService;
+import com.event_registration_system.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.event_registration_system.services;
+package com.event_registration_system.service;
 
 import com.event_registration_system.entities.Event;
 import com.event_registration_system.repository.EventRepository;

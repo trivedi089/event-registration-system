@@ -1,6 +1,6 @@
 package com.event_registration_system.config;
 
-import com.event_registration_system.services.CustomUserDetailsService;
+import com.event_registration_system.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
