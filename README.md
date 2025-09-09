@@ -12,36 +12,36 @@
 
 2. Features / Functionalities
 
-List all features your system supports. 
-Example:
-	•	User registration and login
-	•	CRUD operations for events (Create, Read, Update, Delete)
-	•	User can register for events
-	•	View all registrations and registrations per user
-	•	Cancel a registration
-	•	Data persisted in PostgreSQL
+	List all features your system supports. 
+	Example:
+		•	User registration and login
+		•	CRUD operations for events (Create, Read, Update, Delete)
+		•	User can register for events
+		•	View all registrations and registrations per user
+		•	Cancel a registration
+		•	Data persisted in PostgreSQL
  
 3. Setup Instructions
 
-Explain how someone can run your project:
-	1.	Prerequisites:
-	•	Java JDK 17
-	•	Maven
-	•	PostgreSQL installed and running
+	Explain how someone can run your project:
+		1.	Prerequisites:
+			•	Java JDK 17
+			•	Maven
+			•	PostgreSQL installed and running
  
-  2. 	Database Setup:
-  CREATE ROLE eventuser WITH LOGIN PASSWORD 'password';
-  CREATE DATABASE eventdb;
-  GRANT ALL PRIVILEGES ON DATABASE eventdb TO eventuser;
+  		2. 	Database Setup:
+  			CREATE ROLE eventuser WITH LOGIN PASSWORD 'password';
+  			CREATE DATABASE eventdb;
+  			GRANT ALL PRIVILEGES ON DATABASE eventdb TO eventuser;
 
-  3.	Spring Boot Configuration:
-     application.properties:
-    	spring.datasource.url=jdbc:postgresql://localhost:5432/eventdb
-      spring.datasource.username=eventuser
-      spring.datasource.password=password
-      spring.jpa.hibernate.ddl-auto=update
-      spring.jpa.show-sql=true
-      spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+  		3.	Spring Boot Configuration:
+     		application.properties:
+    			spring.datasource.url=jdbc:postgresql://localhost:5432/eventdb
+      			spring.datasource.username=eventuser
+      			spring.datasource.password=password
+      			spring.jpa.hibernate.ddl-auto=update
+      			spring.jpa.show-sql=true
+      			spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
-  4.	Run the project:
-       mvn spring-boot:run
+4.	Run the project:
+    mvn spring-boot:run
