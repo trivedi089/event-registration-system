@@ -55,7 +55,7 @@ CREATE DATABASE eventdb;
 GRANT ALL PRIVILEGES ON DATABASE eventdb TO eventuser;
 
 ---
-
+```
 #	Spring Boot Configuration
 
 - spring.datasource.url=jdbc:postgresql://localhost:5432/eventdb
