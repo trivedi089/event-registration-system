@@ -56,7 +56,7 @@ GRANT ALL PRIVILEGES ON DATABASE eventdb TO eventuser;
 
 ---
 ```
-#	Spring Boot Configuration
+# 4. Spring Boot Configuration
 
 - spring.datasource.url=jdbc:postgresql://localhost:5432/eventdb
 - spring.datasource.username=eventuser
@@ -68,12 +68,12 @@ GRANT ALL PRIVILEGES ON DATABASE eventdb TO eventuser;
 
 ---
 
-# Run the Project
+# 5. Run the Project
 - mvn spring-boot:run
 
 ---
 
-## API Documentation
+## 6. API Documentation
 
 ### Auth APIs (AuthController)
 
@@ -329,3 +329,13 @@ Login successful for: alice@example.com
   "status": "CANCELLED"
 }
 ```
+## 7. Running Tests
+
+The project includes unit and integration tests for controllers, services, and repositories using **JUnit 5** and **Mockito**.
+
+### Running Tests
+
+To run all tests:
+
+```bash
+mvn test
