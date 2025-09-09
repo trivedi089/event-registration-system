@@ -23,7 +23,8 @@
  
 3. Setup Instructions
 
-	Explain how someone can run your project:
+	setup required to run the project :
+
 		1.	Prerequisites:
 			•	Java JDK 17
 			•	Maven
@@ -43,5 +44,5 @@
       			spring.jpa.show-sql=true
       			spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
-4.	Run the project:
+5.	Run the project:
     mvn spring-boot:run
