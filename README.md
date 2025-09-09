@@ -54,18 +54,24 @@ CREATE DATABASE eventdb;
 -- Grant privileges
 GRANT ALL PRIVILEGES ON DATABASE eventdb TO eventuser;
 
-# Spring Boot Configuration
+---
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/eventdb
-spring.datasource.username=eventuser
-spring.datasource.password=password
+#	Spring Boot Configuration
 
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+- spring.datasource.url=jdbc:postgresql://localhost:5432/eventdb
+- spring.datasource.username=eventuser
+- spring.datasource.password=password
+
+- spring.jpa.hibernate.ddl-auto=update
+- spring.jpa.show-sql=true
+- spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+---
 
 # Run the Project
-mvn spring-boot:run
+- mvn spring-boot:run
+
+---
 
 ## API Documentation
 
